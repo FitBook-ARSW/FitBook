@@ -4,7 +4,7 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Mockups
 
-[Mockups] (https://app.moqups.com/lH5QmmXTxY/view)
+[Mockups](https://app.moqups.com/lH5QmmXTxY/view)
 
 ## Diagrama de Clases
 
