@@ -10,9 +10,9 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Casos de Uso
 
-* ![Administrador de Box][./img/casosdeusouno.png]
+* ![Administrador de Box](./img/casosdeusouno.png)
 
-* ![Usuario Comun][./img/casosdeusodos.png]
+* ![Usuario Comun](./img/casosdeusodos.png)
 
 ## Correr proyecto
 
