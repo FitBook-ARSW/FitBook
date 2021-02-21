@@ -10,9 +10,9 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Casos de Uso
 
-* ![Administrador de Box](./img/casosdeusouno.png)
+![Administrador de Box](./img/casosdeusouno.png)
 
-* ![Usuario Comun](./img/casosdeusodos.png)
+![Usuario Comun](./img/casosdeusodos.png)
 
 ## Correr proyecto
 
@@ -76,16 +76,16 @@ $ mvn test
 ## Authors
 
  - Santiago Martínez Martínez 
- - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
- - Noveno Semestre
+    - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
+    - Noveno Semestre
 
  - Javier Esteban Lopez
- - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
- - Noveno Semestre
+    - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
+    - Noveno Semestre
 
  - Nikolas Bernal Giraldo
- - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
- - Noveno Semestre
+    - Estudiante de la Escuela Colombiana De Ingeniería Julio Garavito 
+    - Noveno Semestre
 
 ## License
 
