@@ -8,7 +8,7 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Diagrama de Clases
 
-[Diagrama De Clases](./img/diagramaclases.PNG)
+![Diagrama De Clases](./img/diagramaclases.PNG)
 
 ## Casos de Uso
 
