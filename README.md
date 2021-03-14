@@ -8,6 +8,12 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Diagrama de Clases
 
+![Diagrama De Clases](./img/diagramaclases.PNG)
+
+## Diagrama Componentes y Conectores
+
+![Diagrama CyC](./img/CyC.PNG)
+
 ## Casos de Uso
 
 ![Administrador de Box](./img/casosdeusouno.png)
