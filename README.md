@@ -12,7 +12,7 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ## Diagrama Componentes y Conectores
 
-![Diagrama CyC](./img/CyC.PNG)
+![Diagrama CyC](./img/cyc.PNG)
 
 ## Casos de Uso
 
