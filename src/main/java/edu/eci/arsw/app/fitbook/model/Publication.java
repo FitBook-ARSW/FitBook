@@ -1,8 +1,7 @@
 package edu.eci.arsw.app.fitbook.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ public class Publication implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int publication_id;
+    public int publication_id;
 
     @Column(name = "content")
     public String content;
@@ -35,17 +34,33 @@ public class Publication implements Serializable{
     public int likes;
 
     @Column(name = "uploaddate")
-    public Date uploaDate;
+    public Timestamp uploaDate;
 
     public Publication(){
 
     }
 
-    public Publication(String content, int userId, int likes, Date uploaDate){
+    public Publication(String content, int userId, int likes){
         this.content = content;
         this.userId = userId;
         this.likes = likes;
-        this.uploaDate = uploaDate;
+        this.uploaDate = new Timestamp(System.currentTimeMillis());;
+    }
+
+    public Publication(int publication_id,String content, int userId, int likes){
+        this.publication_id = publication_id;
+        this.content = content;
+        this.userId = userId;
+        this.likes = likes;
+        this.uploaDate = new Timestamp(System.currentTimeMillis());;
+    }
+
+    public int getId(){
+        return publication_id;
+    }
+
+    public void setId(int publication_id){
+        this.publication_id = publication_id;
     }
 
     public String getContent(){
@@ -72,11 +87,11 @@ public class Publication implements Serializable{
         this.likes = likes;
     }
 
-    public Date getUploaDate(){
+    public Timestamp getUploaDate(){
         return uploaDate;
     }
 
-    public void setUploadDate(Date uploaDate){
+    public void setUploadDate(Timestamp uploaDate){
         this.uploaDate = uploaDate;
     }
 
