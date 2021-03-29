@@ -36,23 +36,25 @@ public class Publication implements Serializable{
     @Column(name = "uploaddate")
     public Timestamp uploaDate;
 
+    @Column(name = "mail")
+    public String mail;
+
     public Publication(){
 
     }
 
-    public Publication(String content, int userId, int likes){
+    public Publication(String content, String mail, int likes){
         this.content = content;
-        this.userId = userId;
+        this.mail = mail;
         this.likes = likes;
-        this.uploaDate = new Timestamp(System.currentTimeMillis());;
+        this.uploaDate = new Timestamp(System.currentTimeMillis());
     }
 
-    public Publication(int publication_id,String content, int userId, int likes){
-        this.publication_id = publication_id;
+    public Publication(int publication_id, String content, int likes, String mail){
         this.content = content;
-        this.userId = userId;
+        this.mail = mail;
         this.likes = likes;
-        this.uploaDate = new Timestamp(System.currentTimeMillis());;
+        this.uploaDate = new Timestamp(System.currentTimeMillis());
     }
 
     public int getId(){
@@ -95,5 +97,12 @@ public class Publication implements Serializable{
         this.uploaDate = uploaDate;
     }
 
+    public String getMail(){
+        return mail;
+    }
+
+    public void setMail(String mail){
+        this.mail = mail;
+    }
 
 }

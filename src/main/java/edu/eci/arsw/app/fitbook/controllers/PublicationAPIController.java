@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.controllers;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -14,10 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.services.IPublicationServices;
+import edu.eci.arsw.app.fitbook.services.IUserServices;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class PublicationAPIController {
+
+    @Autowired
+    IUserServices us;
     
     @Autowired
     IPublicationServices ps;
@@ -34,7 +40,10 @@ public class PublicationAPIController {
     @RequestMapping(path = "/publications/add", method= RequestMethod.POST)
     public ResponseEntity<?> createNewPublication(@RequestBody Publication publication){
         try {
-            System.out.println("Publication content "+publication.getContent()+ " " + publication.getLikes()+ " " + publication.getUserId()+ " "+ publication.getId());
+            System.out.println(publication.getMail()+" MAILLLLLLLLLLLLLLLLLLL");
+            int index = ps.getAllPublications().size();
+            publication.setId(index+1);
+            publication.setUploadDate(new Timestamp(System.currentTimeMillis()));
             ps.addPublication(publication);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {

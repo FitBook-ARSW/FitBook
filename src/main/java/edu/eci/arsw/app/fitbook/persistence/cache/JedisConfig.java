@@ -18,10 +18,10 @@ public class JedisConfig {
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("redis-16732.c11.us-east-1-3.ec2.cloud.redislabs.com");
-        redisStandaloneConfiguration.setPort(16732);
+        redisStandaloneConfiguration.setHostName("redis-16793.c257.us-east-1-3.ec2.cloud.redislabs.com");
+        redisStandaloneConfiguration.setPort(16793);
         redisStandaloneConfiguration.setDatabase(0);
-        redisStandaloneConfiguration.setPassword(RedisPassword.of("cFUp78iXNRJM3d4fELZS0mG7xmTinLHH"));
+        redisStandaloneConfiguration.setPassword(RedisPassword.of("xrdu2OpbDCEroSYWrjslHJJ1f0Y0yIGY"));
         JedisClientConfiguration.JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
         jedisClientConfiguration.connectTimeout(Duration.ofSeconds(60));
         return new JedisConnectionFactory(redisStandaloneConfiguration, jedisClientConfiguration.build());

@@ -41,14 +41,21 @@ public class FitbookCache implements IFitbookCache{
     }
 
     @Override
-    public List<Publication> getAll() {
-        return hashOperations.values(KEY);
+    public List<Publication> getAll() throws Exception {
+        try {
+            return hashOperations.values(KEY);
+        } catch (Exception e) {
+            throw new Exception(e.toString());
+        }
+        
     }
 
     @Override
     public void put(Publication publication) {
         try {
+            System.out.println(publication.getMail());
             hashOperations.put(KEY, (long) publication.getId(), publication);
+            System.out.println("Do with out error's");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
