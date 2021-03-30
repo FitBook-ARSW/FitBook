@@ -34,13 +34,13 @@ public class User implements Serializable {
     private String cedula;
 
     @Column(name = "box")
-    private String box;
+    private int box;
 
     public User() {
 
     }
 
-    public User(String fullName, String email, String role, String box, String cedula) {
+    public User(String fullName, String email, String role, int box, String cedula) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
@@ -88,11 +88,11 @@ public class User implements Serializable {
         this.cedula = cedula;
     }
 
-    public String getBox() {
+    public int getBox() {
         return box;
     }
 
-    public void setBox(String box) {
+    public void setBox(int box) {
         this.box = box;
     }
 }
