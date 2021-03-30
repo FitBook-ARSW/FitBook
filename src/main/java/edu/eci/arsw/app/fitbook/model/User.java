@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class User implements Serializable {
     /**
      *
      */
@@ -27,61 +27,72 @@ public class User implements Serializable{
     @Column(name = "email")
     private String email;
 
-
     @Column(name = "role")
     private String role;
 
     @Column(name = "cedula")
     private String cedula;
 
-    public User(){
+    @Column(name = "box")
+    private String box;
+
+    public User() {
 
     }
 
-    public User(String fullName, String email, String role, String cedula){
+    public User(String fullName, String email, String role, String box, String cedula) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
         this.cedula = cedula;
+        this.box = box;
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return user_id;
     }
 
-    public void setUserId(int user_id){
+    public void setUserId(int user_id) {
         this.user_id = user_id;
     }
 
-    public String getFullName(){
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName){
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getRole(){
+    public String getRole() {
         return role;
     }
 
-    public void setRole(String role){
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public String getCedula(){
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCc(String cedula){
+    public void setCc(String cedula) {
         this.cedula = cedula;
+    }
+
+    public String getBox() {
+        return box;
+    }
+
+    public void setBox(String box) {
+        this.box = box;
     }
 }
