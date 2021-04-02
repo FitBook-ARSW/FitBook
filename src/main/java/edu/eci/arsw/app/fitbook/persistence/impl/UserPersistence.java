@@ -57,7 +57,7 @@ public class UserPersistence implements IUserPersistence{
             }
             return (User) query.getSingleResult();
         } catch (Exception e) {
-            throw new FitBookPersistenceException("Error no find User");
+            throw new FitBookPersistenceException(e.toString());
         }
     }
 
