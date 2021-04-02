@@ -33,19 +33,19 @@ public class User implements Serializable {
     @Column(name = "cedula")
     private String cedula;
 
-    @Column(name = "box")
-    private int box;
+    @Column(name = "boxId")
+    private int boxId;
 
     public User() {
 
     }
 
-    public User(String fullName, String email, String role, int box, String cedula) {
+    public User(String fullName, String email, String role, int boxId, String cedula) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
         this.cedula = cedula;
-        this.box = box;
+        this.boxId = boxId;
     }
 
     public int getUserId() {
@@ -88,11 +88,11 @@ public class User implements Serializable {
         this.cedula = cedula;
     }
 
-    public int getBox() {
-        return box;
+    public int getBoxId() {
+        return boxId;
     }
 
-    public void setBox(int box) {
-        this.box = box;
+    public void setBoxId(int boxId) {
+        this.boxId = boxId;
     }
 }
