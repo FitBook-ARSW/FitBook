@@ -50,4 +50,15 @@ public class UserAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(path = "/users/{mail}/{boxId}", method = RequestMethod.POST)
+    public ResponseEntity<?> updateBoxIdFromUser(@PathVariable(name= "mail") String mail, @PathVariable(name= "boxId") int boxId){
+        try{
+            System.out.println(mail + " " +boxId);
+            us.changeBoxIdFromUser(boxId, mail);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
 }

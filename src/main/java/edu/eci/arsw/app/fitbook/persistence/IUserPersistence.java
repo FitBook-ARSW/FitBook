@@ -6,4 +6,5 @@ public interface IUserPersistence {
     void addUser(User user) throws FitBookPersistenceException;
     User getUserByCedula(String cedula) throws FitBookPersistenceException;
     User getUserByEmail(String email) throws FitBookPersistenceException;
+    void changeBoxIdFromUser(int boxId, String mail) throws FitBookPersistenceException;
 }

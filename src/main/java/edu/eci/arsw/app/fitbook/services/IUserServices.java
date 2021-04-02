@@ -6,4 +6,5 @@ public interface IUserServices {
     void addUser(User user) throws FitBookException;
     User getUserByCedula(String cedula) throws FitBookException;
     User getUserByEmail(String email) throws FitBookException;
+    void changeBoxIdFromUser(int boxId, String mail) throws FitBookException;
 }

@@ -25,12 +25,16 @@ public class Box implements Serializable{
     @Column(name = "name")
     private String name;
 
+    @Column(name = "active")
+    private boolean active;
+
     public Box(){
 
     }
 
     public Box(String name){
         this.name = name;
+        active = true;
     }
 
     public int getId(){
@@ -47,6 +51,14 @@ public class Box implements Serializable{
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public boolean getActive(){
+        return active;
+    }
+
+    public void setActive(boolean active){
+        this.active = active;
     }
     
 }

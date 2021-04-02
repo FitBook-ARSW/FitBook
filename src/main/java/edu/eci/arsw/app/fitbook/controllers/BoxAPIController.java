@@ -20,7 +20,7 @@ public class BoxAPIController {
     @Autowired
     IBoxServices bs;
 
-    @RequestMapping(path = "box/add", method = RequestMethod.POST)
+    @RequestMapping(path = "/box/add", method = RequestMethod.POST)
     public ResponseEntity<?> createNewBox(@RequestBody Box box){
         try {
             bs.addBox(box);
@@ -30,10 +30,19 @@ public class BoxAPIController {
         }
     }
 
-    @RequestMapping(path = "box/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/box/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getBoxById(@PathVariable(name = "id") int id){
         try {
             return new ResponseEntity<>(bs.getUserById(id),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "box", method = RequestMethod.GET)
+    public ResponseEntity<?> getAll(){
+        try {
+            return new ResponseEntity<>(bs.getAll(),HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }

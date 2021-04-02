@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.persistence.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -41,6 +43,17 @@ public class BoxPersistence implements IBoxPersistence{
             return (Box) query.getSingleResult();
         } catch (Exception e) {
             throw new FitBookPersistenceException("Error no find Box");
+        }
+    }
+
+    @Override
+    public List<Box> getAll() throws FitBookPersistenceException {
+        try {
+            System.out.println("Message to database");
+            Query query = entityManager.createNativeQuery("select * from box", Box.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException("Publications not founds");
         }
     }
     

@@ -3,6 +3,7 @@ package edu.eci.arsw.app.fitbook.persistence.impl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,16 @@ public class UserPersistence implements IUserPersistence{
         }
     }
 
-        
+    @Override
+    @Transactional
+    public void changeBoxIdFromUser(int idBox, String mail) throws FitBookPersistenceException{
+        try {
+            Query query = entityManager.createNativeQuery("update users set boxid=? where email=?");
+            query.setParameter(1, idBox);
+            query.setParameter(2, mail);
+            query.executeUpdate();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException(e.toString());
+        }
+    }
 }

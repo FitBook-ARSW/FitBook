@@ -41,5 +41,14 @@ public class UserService implements IUserServices{
             throw new FitBookException(e.toString());
         }
     }
+
+    @Override
+    public void changeBoxIdFromUser(int boxId, String mail) throws FitBookException {
+        try {
+            up.changeBoxIdFromUser(boxId, mail);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }        
+    }
     
 }

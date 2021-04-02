@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,15 @@ public class BoxService implements IBoxServices {
     public Box getUserById(int id) throws FitBookException {
         try {
             return bp.getBoxById(id);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }
+    }
+
+    @Override
+    public List<Box> getAll() throws FitBookException {
+        try {
+            return bp.getAll();
         } catch (Exception e) {
             throw new FitBookException(e.toString());
         }
