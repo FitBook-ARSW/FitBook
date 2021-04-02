@@ -7,4 +7,5 @@ public interface IUserServices {
     User getUserByCedula(String cedula) throws FitBookException;
     User getUserByEmail(String email) throws FitBookException;
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookException;
+    void unrollForBoxByEmail(String email) throws FitBookException;
 }

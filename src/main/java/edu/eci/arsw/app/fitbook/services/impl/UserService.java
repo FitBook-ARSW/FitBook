@@ -50,5 +50,14 @@ public class UserService implements IUserServices{
             throw new FitBookException(e.toString());
         }        
     }
+
+    @Override
+    public void unrollForBoxByEmail(String email) throws FitBookException {
+	try {
+	    up.unrollForBoxByEmail(email);
+	} catch (Exception e) {
+            throw new FitBookException(e.toString());
+	}
+    }
     
 }

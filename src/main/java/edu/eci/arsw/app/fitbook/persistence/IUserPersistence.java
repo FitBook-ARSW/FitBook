@@ -7,4 +7,5 @@ public interface IUserPersistence {
     User getUserByCedula(String cedula) throws FitBookPersistenceException;
     User getUserByEmail(String email) throws FitBookPersistenceException;
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookPersistenceException;
+    void unrollForBoxByEmail(String email) throws FitBookPersistenceException;
 }

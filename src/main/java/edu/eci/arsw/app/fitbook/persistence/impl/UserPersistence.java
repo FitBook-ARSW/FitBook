@@ -14,7 +14,7 @@ import edu.eci.arsw.app.fitbook.persistence.IUserPersistence;
 import edu.eci.arsw.app.fitbook.persistence.repo.IUserRepo;
 
 @Service
-public class UserPersistence implements IUserPersistence{
+public class UserPersistence implements IUserPersistence {
 
     @Autowired
     IUserRepo ur;
@@ -25,12 +25,12 @@ public class UserPersistence implements IUserPersistence{
     @Override
     public void addUser(User user) throws FitBookPersistenceException {
         try {
-            
+
             ur.save(user);
         } catch (Exception e) {
             throw new FitBookPersistenceException(e.toString());
         }
-        
+
     }
 
     @Override
@@ -63,11 +63,23 @@ public class UserPersistence implements IUserPersistence{
 
     @Override
     @Transactional
-    public void changeBoxIdFromUser(int idBox, String mail) throws FitBookPersistenceException{
+    public void changeBoxIdFromUser(int idBox, String mail) throws FitBookPersistenceException {
         try {
             Query query = entityManager.createNativeQuery("update users set boxid=? where email=?");
             query.setParameter(1, idBox);
             query.setParameter(2, mail);
+            query.executeUpdate();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException(e.toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public void unrollForBoxByEmail(String email) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("update users set boxid=null where email=?");
+            query.setParameter(1, email);
             query.executeUpdate();
         } catch (Exception e) {
             throw new FitBookPersistenceException(e.toString());

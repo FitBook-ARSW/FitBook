@@ -61,4 +61,14 @@ public class UserAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(path = "/users/box/{mail}", method = RequestMethod.POST)
+    public ResponseEntity<?> unRollUserByEmail(@PathVariable(name= "mail") String mail){
+        try {
+            us.unrollForBoxByEmail(mail);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
 }
