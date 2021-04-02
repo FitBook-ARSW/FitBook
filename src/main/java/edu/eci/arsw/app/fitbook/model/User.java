@@ -33,14 +33,14 @@ public class User implements Serializable {
     @Column(name = "cedula")
     private String cedula;
 
-    @Column(name = "boxId")
-    private int boxId;
+    @Column(name = "boxid")
+    private Integer boxId;
 
     public User() {
 
     }
 
-    public User(String fullName, String email, String role, int boxId, String cedula) {
+    public User(String fullName, String email, String role, Integer boxId, String cedula) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
@@ -88,11 +88,11 @@ public class User implements Serializable {
         this.cedula = cedula;
     }
 
-    public int getBoxId() {
+    public Integer getBoxId() {
         return boxId;
     }
 
-    public void setBoxId(int boxId) {
+    public void setBoxId(Integer boxId) {
         this.boxId = boxId;
     }
 }
