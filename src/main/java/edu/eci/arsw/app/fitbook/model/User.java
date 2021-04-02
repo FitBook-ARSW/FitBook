@@ -33,7 +33,7 @@ public class User implements Serializable {
     @Column(name = "cedula")
     private String cedula;
 
-    @Column(name = "boxId")
+    @Column(name = "box")
     private int box;
 
     public User() {
