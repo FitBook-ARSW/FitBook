@@ -3,8 +3,6 @@ package edu.eci.arsw.app.fitbook.controllers;
 import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -65,6 +63,18 @@ public class PublicationAPIController {
     public ResponseEntity<?> getPublicationByUserId(@PathVariable(name = "id") int id){
         try {
             return new ResponseEntity<>(ps.getPublicationsForUserId(id),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "/publications/last/{url}", method = RequestMethod.POST)
+    public ResponseEntity<?> addUrlImgToLastPublication(@PathVariable(name = "url") String imgUrl){
+        try {
+            int lastId = ps.getAllPublications().size();
+            Publication lastPublication = ps.getPublicationById(lastId);
+            lastPublication.setImgUrl(imgUrl);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
