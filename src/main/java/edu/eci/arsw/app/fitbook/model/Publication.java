@@ -2,6 +2,9 @@ package edu.eci.arsw.app.fitbook.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table (name = "publications")
-public class Publication implements Serializable{
-    
+@Table(name = "publications")
+public class Publication implements Serializable {
 
     /**
      *
@@ -34,7 +35,7 @@ public class Publication implements Serializable{
     public int likes;
 
     @Column(name = "uploaddate")
-    public Timestamp uploaDate;
+    public String uploaDate;
 
     @Column(name = "mail")
     public String mail;
@@ -42,78 +43,82 @@ public class Publication implements Serializable{
     @Column(name = "imgUrl")
     public String imgUrl;
 
-    public Publication(){
+    public Publication() {
 
     }
 
-    public Publication(String content, String mail, int likes){
+    public Publication(String content, String mail, int likes) {
         this.content = content;
         this.mail = mail;
         this.likes = likes;
-        this.uploaDate = new Timestamp(System.currentTimeMillis());
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        this.uploaDate = formatter.format(date);
     }
 
-    public Publication(int publication_id, String content, int likes, String mail, String imgUrl){
+    public Publication(int publication_id, String content, int likes, String mail, String imgUrl) {
         this.content = content;
         this.mail = mail;
         this.likes = likes;
         this.imgUrl = imgUrl;
-        this.uploaDate = new Timestamp(System.currentTimeMillis());
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        this.uploaDate = formatter.format(date);
     }
 
-    public int getId(){
+    public int getId() {
         return publication_id;
     }
 
-    public void setId(int publication_id){
+    public void setId(int publication_id) {
         this.publication_id = publication_id;
     }
 
-    public String getContent(){
+    public String getContent() {
         return content;
     }
 
-    public void setContent(String content){
+    public void setContent(String content) {
         this.content = content;
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId){
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public int getLikes(){
+    public int getLikes() {
         return likes;
     }
 
-    public void setLikes(int likes){
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
-    public Timestamp getUploaDate(){
+    public String getUploaDate() {
         return uploaDate;
     }
 
-    public void setUploadDate(Timestamp uploaDate){
+    public void setUploadDate(String uploaDate) {
         this.uploaDate = uploaDate;
     }
 
-    public String getMail(){
+    public String getMail() {
         return mail;
     }
 
-    public void setMail(String mail){
+    public void setMail(String mail) {
         this.mail = mail;
     }
 
-    public String getImgUrl(){
+    public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl){
+    public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 

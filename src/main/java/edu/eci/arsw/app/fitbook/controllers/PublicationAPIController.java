@@ -1,6 +1,8 @@
 package edu.eci.arsw.app.fitbook.controllers;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,26 +24,27 @@ public class PublicationAPIController {
 
     @Autowired
     IUserServices us;
-    
+
     @Autowired
     IPublicationServices ps;
 
     @RequestMapping(path = "/publications", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllPost(){
+    public ResponseEntity<?> getAllPost() {
         try {
-            return new ResponseEntity<>(ps.getAllPublications(),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(ps.getAllPublications(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
         }
-    } 
+    }
 
-    @RequestMapping(path = "/publications/add", method= RequestMethod.POST)
-    public ResponseEntity<?> createNewPublication(@RequestBody Publication publication){
+    @RequestMapping(path = "/publications/add", method = RequestMethod.POST)
+    public ResponseEntity<?> createNewPublication(@RequestBody Publication publication) {
         try {
-            System.out.println(publication.getMail()+" MAILLLLLLLLLLLLLLLLLLL");
             int index = ps.getAllPublications().size();
-            publication.setId(index+1);
-            publication.setUploadDate(new Timestamp(System.currentTimeMillis()));
+            publication.setId(index + 1);
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            publication.setUploadDate(formatter.format(date));
             ps.addPublication(publication);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -49,9 +52,8 @@ public class PublicationAPIController {
         }
     }
 
-
     @RequestMapping(path = "/publications/id/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getPubicationById(@PathVariable(name = "id") int id){
+    public ResponseEntity<?> getPubicationById(@PathVariable(name = "id") int id) {
         try {
             return new ResponseEntity<>(ps.getPublicationById(id), HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -60,9 +62,9 @@ public class PublicationAPIController {
     }
 
     @RequestMapping(path = "/publications/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getPublicationByUserId(@PathVariable(name = "id") int id){
+    public ResponseEntity<?> getPublicationByUserId(@PathVariable(name = "id") int id) {
         try {
-            return new ResponseEntity<>(ps.getPublicationsForUserId(id),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(ps.getPublicationsForUserId(id), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
