@@ -68,8 +68,8 @@ public class PublicationAPIController {
         }
     }
 
-    @RequestMapping(path = "/publications/last/{url}", method = RequestMethod.POST)
-    public ResponseEntity<?> addUrlImgToLastPublication(@PathVariable(name = "url") String imgUrl){
+    @RequestMapping(path = "/publications/last/urlImg", method = RequestMethod.POST)
+    public ResponseEntity<?> addUrlImgToLastPublication(@RequestBody String imgUrl){
         try {
             int lastId = ps.getAllPublications().size();
             Publication lastPublication = ps.getPublicationById(lastId);
