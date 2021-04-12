@@ -67,16 +67,4 @@ public class PublicationAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
-
-    @RequestMapping(path = "/publications/last/urlImg", method = RequestMethod.POST)
-    public ResponseEntity<?> addUrlImgToLastPublication(@RequestBody String imgUrl){
-        try {
-            int lastId = ps.getAllPublications().size();
-            Publication lastPublication = ps.getPublicationById(lastId);
-            lastPublication.setImgUrl(imgUrl);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
-        }
-    }
 }
