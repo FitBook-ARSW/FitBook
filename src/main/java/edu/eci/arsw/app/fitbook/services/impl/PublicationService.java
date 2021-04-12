@@ -59,7 +59,7 @@ public class PublicationService implements IPublicationServices {
         try {
             return pp.getPublicationsForUserId(user_id);
         } catch (Exception e) {
-            throw new FitBookException("Publications not found");
+            throw new FitBookException(e.toString());
         }
     }
 }

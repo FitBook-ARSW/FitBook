@@ -1,6 +1,5 @@
 package edu.eci.arsw.app.fitbook.controllers;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
