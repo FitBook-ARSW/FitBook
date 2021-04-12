@@ -39,6 +39,9 @@ public class Publication implements Serializable{
     @Column(name = "mail")
     public String mail;
 
+    @Column(name = "imgUrl")
+    public String imgUrl;
+
     public Publication(){
 
     }
@@ -50,10 +53,11 @@ public class Publication implements Serializable{
         this.uploaDate = new Timestamp(System.currentTimeMillis());
     }
 
-    public Publication(int publication_id, String content, int likes, String mail){
+    public Publication(int publication_id, String content, int likes, String mail, String imgUrl){
         this.content = content;
         this.mail = mail;
         this.likes = likes;
+        this.imgUrl = imgUrl;
         this.uploaDate = new Timestamp(System.currentTimeMillis());
     }
 
@@ -103,6 +107,14 @@ public class Publication implements Serializable{
 
     public void setMail(String mail){
         this.mail = mail;
+    }
+
+    public String getImgUrl(){
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl){
+        this.imgUrl = imgUrl;
     }
 
 }
