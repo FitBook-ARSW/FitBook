@@ -8,4 +8,5 @@ public interface IUserServices {
     User getUserByEmail(String email) throws FitBookException;
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookException;
     void unrollForBoxByEmail(String email) throws FitBookException;
+    void changeUrlPhotoFromUser(String url, String mail) throws FitBookException;
 }

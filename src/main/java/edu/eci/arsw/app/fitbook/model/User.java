@@ -36,16 +36,20 @@ public class User implements Serializable {
     @Column(name = "boxid")
     private Integer boxId;
 
+    @Column(name = "url")
+    private String url;
+
     public User() {
 
     }
 
-    public User(String fullName, String email, String role, Integer boxId, String cedula) {
+    public User(String fullName, String email, String role, Integer boxId, String cedula, String url) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
         this.cedula = cedula;
         this.boxId = boxId;
+        this.url = url;
     }
 
     public int getUserId() {
@@ -94,5 +98,13 @@ public class User implements Serializable {
 
     public void setBoxId(Integer boxId) {
         this.boxId = boxId;
+    }
+
+    public String getUrl(){
+        return url;
+    }
+
+    public void setUrl(String url){
+        this.url = url;
     }
 }

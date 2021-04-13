@@ -8,4 +8,5 @@ public interface IUserPersistence {
     User getUserByEmail(String email) throws FitBookPersistenceException;
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookPersistenceException;
     void unrollForBoxByEmail(String email) throws FitBookPersistenceException;
+    void changeUrlPhotoFromUser(String url, String mail) throws FitBookPersistenceException;
 }

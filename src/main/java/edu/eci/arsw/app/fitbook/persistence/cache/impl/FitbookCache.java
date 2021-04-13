@@ -65,4 +65,13 @@ public class FitbookCache implements IFitbookCache{
     public boolean exists(int publication_id) {
         return false;
     }
+
+    @Override
+    public void delete(int publication_id) throws Exception {
+        try {
+            hashOperations.delete(KEY,(long) publication_id);
+        } catch (Exception e) {
+            throw new Exception(e.toString());
+        }
+    }
 }

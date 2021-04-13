@@ -62,4 +62,14 @@ public class PublicationService implements IPublicationServices {
             throw new FitBookException(e.toString());
         }
     }
+
+    @Override
+    public void deletePublicationById(int publication_id) throws FitBookException {
+        try {
+            fc.delete(publication_id);
+        } catch (Exception e) {
+            throw new FitBookException("Error to delete Post");
+        }
+        
+    }
 }

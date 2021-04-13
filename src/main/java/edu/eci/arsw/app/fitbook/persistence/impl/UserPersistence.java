@@ -85,4 +85,18 @@ public class UserPersistence implements IUserPersistence {
             throw new FitBookPersistenceException(e.toString());
         }
     }
+
+    @Override
+    @Transactional
+    public void changeUrlPhotoFromUser(String url, String mail) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("update users set url=? where email=?");
+            query.setParameter(1, url);
+            query.setParameter(2, mail);
+            query.executeUpdate();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException(e.toString());
+        }
+        
+    }
 }

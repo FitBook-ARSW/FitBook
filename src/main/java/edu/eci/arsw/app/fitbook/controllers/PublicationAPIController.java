@@ -68,4 +68,14 @@ public class PublicationAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(path = "/publications/delete/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> deletePublicationById(@PathVariable(name = "id") int publication_id) {
+        try {
+            ps.deletePublicationById(publication_id);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
 }

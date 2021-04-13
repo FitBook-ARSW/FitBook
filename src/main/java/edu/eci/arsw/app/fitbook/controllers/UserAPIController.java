@@ -62,6 +62,16 @@ public class UserAPIController {
         }
     }
 
+    @RequestMapping(path = "/users/{mail}/{url}", method = RequestMethod.POST)
+    public ResponseEntity<?> updateUrlFromUser(@PathVariable(name= "mail") String mail, @PathVariable(name= "url") String url) {
+        try {
+            us.changeUrlPhotoFromUser(url, mail);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(path = "/users/box/{mail}", method = RequestMethod.POST)
     public ResponseEntity<?> unRollUserByEmail(@PathVariable(name= "mail") String mail){
         try {

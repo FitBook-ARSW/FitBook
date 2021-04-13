@@ -9,4 +9,5 @@ public interface IFitbookCache {
     void put(Publication publication);
     boolean exists(int publication_id);
     List<Publication> getAll() throws Exception;
+    void delete(int publication_id) throws Exception;
 }

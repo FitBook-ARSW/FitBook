@@ -9,7 +9,7 @@ import edu.eci.arsw.app.fitbook.services.FitBookException;
 import edu.eci.arsw.app.fitbook.services.IUserServices;
 
 @Service
-public class UserService implements IUserServices{
+public class UserService implements IUserServices {
 
     @Autowired
     IUserPersistence up;
@@ -30,7 +30,7 @@ public class UserService implements IUserServices{
         } catch (Exception e) {
             throw new FitBookException(e.toString());
         }
-        
+
     }
 
     @Override
@@ -48,16 +48,26 @@ public class UserService implements IUserServices{
             up.changeBoxIdFromUser(boxId, mail);
         } catch (Exception e) {
             throw new FitBookException(e.toString());
-        }        
+        }
     }
 
     @Override
     public void unrollForBoxByEmail(String email) throws FitBookException {
-	try {
-	    up.unrollForBoxByEmail(email);
-	} catch (Exception e) {
+        try {
+            up.unrollForBoxByEmail(email);
+        } catch (Exception e) {
             throw new FitBookException(e.toString());
-	}
+        }
     }
-    
+
+    @Override
+    public void changeUrlPhotoFromUser(String url, String mail) throws FitBookException {
+        try {
+            up.changeUrlPhotoFromUser(url, mail);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }
+
+    }
+
 }

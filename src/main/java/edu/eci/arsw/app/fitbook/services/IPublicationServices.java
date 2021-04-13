@@ -9,4 +9,5 @@ public interface IPublicationServices {
     void addPublication(Publication publication) throws FitBookException;
     Publication getPublicationById(int publication_id) throws FitBookException;
     List<Publication> getPublicationsForUserId(int user_id) throws FitBookException;
+    void deletePublicationById(int publication_id) throws FitBookException;
 }
