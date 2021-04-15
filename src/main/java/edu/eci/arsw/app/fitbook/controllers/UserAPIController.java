@@ -62,10 +62,13 @@ public class UserAPIController {
         }
     }
 
-    @RequestMapping(path = "/users/{mail}/{url}", method = RequestMethod.POST)
-    public ResponseEntity<?> updateUrlFromUser(@PathVariable(name= "mail") String mail, @PathVariable(name= "url") String url) {
+    @RequestMapping(path = "/users/{mail}", method = RequestMethod.POST)
+    public ResponseEntity<?> updateUrlFromUser(@PathVariable(name= "mail") String mail, @RequestBody String url) {
         try {
-            us.changeUrlPhotoFromUser(url, mail);
+            String realUrl = url.replace("{\"url\":\"","");
+            realUrl = realUrl.replace("\"}", "");
+            System.out.println(realUrl);
+            us.changeUrlPhotoFromUser(realUrl, mail);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
@@ -76,6 +79,7 @@ public class UserAPIController {
     public ResponseEntity<?> unRollUserByEmail(@PathVariable(name= "mail") String mail){
         try {
             us.unrollForBoxByEmail(mail);
+            System.out.println("Entre");
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
