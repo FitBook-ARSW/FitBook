@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.cache.IFitbookCache;
 
@@ -19,6 +20,7 @@ public class FitbookCache implements IFitbookCache{
 
     private RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, Long, Publication> hashOperations;
+    private HashOperations<String, Long, Like> hashOperationsL;
 
     @Autowired
 	public FitbookCache(RedisTemplate<String, Object> redisTemplate) {
@@ -70,6 +72,15 @@ public class FitbookCache implements IFitbookCache{
     public void delete(int publication_id) throws Exception {
         try {
             hashOperations.delete(KEY,(long) publication_id);
+        } catch (Exception e) {
+            throw new Exception(e.toString());
+        }
+    }
+
+    @Override
+    public List<Like> getAllLike() throws Exception {
+        try {
+            return hashOperationsL.values(KEY);
         } catch (Exception e) {
             throw new Exception(e.toString());
         }

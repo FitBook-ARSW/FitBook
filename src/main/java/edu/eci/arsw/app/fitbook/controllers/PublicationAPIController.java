@@ -78,4 +78,13 @@ public class PublicationAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(path = "/likes", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllLikes() {
+        try {
+            return new ResponseEntity<>(ps.getAllLikes(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
