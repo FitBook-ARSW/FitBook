@@ -11,4 +11,5 @@ public interface IPublicationPersistence {
     int getLikesByPost(int postid) throws FitBookPersistenceException;
     List<Publication> getAllPublications() throws FitBookPersistenceException;
     List<Publication> getPublicationsForUserId(int user_id) throws FitBookPersistenceException;
+    public void addLike(Like like) throws FitBookPersistenceException;
 }

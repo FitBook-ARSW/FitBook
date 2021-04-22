@@ -53,10 +53,9 @@ public class PublicationAPIController {
     }
 
     @RequestMapping(path = "/likes/add", method = RequestMethod.POST)
-    public ResponseEntity<?> pushLike(@RequestBody Like like) {
+    public ResponseEntity<?> addLike(@RequestBody Like like) {
         try {
-            int index = ps.getAllPublications().size();
-            like.setId(index + 1);
+            ps.addLike(like);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

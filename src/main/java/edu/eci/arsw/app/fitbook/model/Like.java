@@ -14,7 +14,7 @@ public class Like implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    public int like_id;
 
     @Column(name = "userid")
     private int userid;
@@ -26,17 +26,17 @@ public class Like implements Serializable{
     }
 
     public Like(int id, int userid, int postid) {
-        this.id = id;
+        this.like_id = like_id;
         this.userid = userid;
         this.postid = postid;
     }
 
-    public int getId() {
-        return this.id;
+    public int getLike_id() {
+        return this.like_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLike_id(int id) {
+        this.like_id = id;
     }
 
     public int getUserid() {
@@ -55,8 +55,8 @@ public class Like implements Serializable{
         this.postid = postid;
     }
 
-    public Like id(int id) {
-        setId(id);
+    public Like like_id(int id) {
+        setLike_id(like_id);
         return this;
     }
 
@@ -73,7 +73,7 @@ public class Like implements Serializable{
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
+            " id='" + getLike_id() + "'" +
             ", userid='" + getUserid() + "'" +
             ", postid='" + getPostid() + "'" +
             "}";

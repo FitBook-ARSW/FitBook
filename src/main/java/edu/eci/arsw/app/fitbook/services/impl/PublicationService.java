@@ -84,4 +84,13 @@ public class PublicationService implements IPublicationServices {
             throw new FitBookException(e.getMessage());
         }
     }
+
+    @Override
+    public void addLike(Like like) {
+        try {
+            pp.addLike(like);
+        } catch (Exception e) {
+            throw new FitBookException("Error to delete Post");
+        }
+    }
 }
