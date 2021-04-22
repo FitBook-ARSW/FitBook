@@ -1,9 +1,25 @@
 package edu.eci.arsw.app.fitbook.model;
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "likes")
 public class Like implements Serializable{
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
+
+    @Column(name = "userid")
     private int userid;
+
+    @Column(name = "postid")
     private int postid;
 
     public Like() {

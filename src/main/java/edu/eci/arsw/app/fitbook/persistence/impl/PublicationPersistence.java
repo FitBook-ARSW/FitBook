@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.COUNT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,15 +78,12 @@ public class PublicationPersistence implements IPublicationPersistence{
     @Override
     public int getLikesByPost(int postid) throws FitBookPersistenceException {
         try {
-            Query query = entityManager.createNativeQuery("select COUNT(*) from likes where postid=?", Like.class);
+            Query query = entityManager.createNativeQuery("select * from likes where postid=?", Like.class);
             query.setParameter(1, postid);
-            if (query.getResultList().size() == 0) {
-                throw new FitBookPersistenceException("Publication not found");
-            }
-            System.out.println("Query to DataBase");
-            return (int) query.getSingleResult();
+            System.out.println(query.getSingleResult());
+            return query.getResultList().size();
         } catch (Exception e) {
-            throw new FitBookPersistenceException("Error no find Publication for likes");
+            throw new FitBookPersistenceException(e.getMessage());
         }
     }
 }
