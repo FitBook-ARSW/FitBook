@@ -76,9 +76,9 @@ public class PublicationService implements IPublicationServices {
     }
 
     @Override
-    public List<Like> getAllLikes() throws FitBookException {
+    public int getLikesByPost(int postid) throws FitBookException {
         try {
-            return fc.getAllLike();
+            return pp.getLikesByPost(postid);
             /* return pp.getAllPublications(); */
         } catch (Exception e) {
             throw new FitBookException("Publications not found");

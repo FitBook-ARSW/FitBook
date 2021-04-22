@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.FitBookPersistenceException;
 import edu.eci.arsw.app.fitbook.persistence.IPublicationPersistence;
@@ -70,6 +71,21 @@ public class PublicationPersistence implements IPublicationPersistence{
             return query.getResultList();
         } catch (Exception e) {
             throw new FitBookPersistenceException("Error no find Publication");
+        }
+    }
+
+    @Override
+    public int getLikesByPost(int postid) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("select COUNT(*) from likes where postid=?", Like.class);
+            query.setParameter(1, postid);
+            if (query.getResultList().size() == 0) {
+                throw new FitBookPersistenceException("Publication not found");
+            }
+            System.out.println("Query to DataBase");
+            return (int) query.getSingleResult();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException("Error no find Publication for likes");
         }
     }
 }

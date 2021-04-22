@@ -79,10 +79,10 @@ public class PublicationAPIController {
         }
     }
 
-    @RequestMapping(path = "/likes", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllLikes() {
+    @RequestMapping(path = "/likes/{postid}", method = RequestMethod.POST)
+    public ResponseEntity<?> getLikesByPost(@PathVariable(name = "postid") int postid) {
         try {
-            return new ResponseEntity<>(ps.getAllLikes(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(ps.getLikesByPost(postid), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
         }
