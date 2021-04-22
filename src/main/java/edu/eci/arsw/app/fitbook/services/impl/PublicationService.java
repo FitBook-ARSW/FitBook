@@ -86,7 +86,7 @@ public class PublicationService implements IPublicationServices {
     }
 
     @Override
-    public void addLike(Like like) {
+    public void addLike(Like like) throws FitBookException {
         try {
             pp.addLike(like);
         } catch (Exception e) {
