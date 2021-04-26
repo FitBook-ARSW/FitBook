@@ -36,8 +36,8 @@ public class PublicationService implements IPublicationServices {
     @Override
     public void addPublication(Publication publication) throws FitBookException {
         try {
-            fc.put(publication);
-            /* pp.addPublication(publication); */
+            /* fc.put(publication); */
+            pp.addPublication(publication);
         } catch (Exception e) {
             throw new FitBookException("Error to add publication");
         }
@@ -66,7 +66,7 @@ public class PublicationService implements IPublicationServices {
     @Override
     public void deletePublicationById(int publication_id) throws FitBookException {
         try {
-            fc.delete(publication_id);
+            pp.deletePublicationById(publication_id);
         } catch (Exception e) {
             throw new FitBookException("Error to delete Post");
         }

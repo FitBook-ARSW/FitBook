@@ -9,4 +9,5 @@ public interface IPublicationPersistence {
     public Publication getPublicationById(int publication_id) throws FitBookPersistenceException;
     List<Publication> getAllPublications() throws FitBookPersistenceException;
     List<Publication> getPublicationsForUserId(int user_id) throws FitBookPersistenceException;
+    public void deletePublicationById(int publication_id) throws FitBookPersistenceException;
 }

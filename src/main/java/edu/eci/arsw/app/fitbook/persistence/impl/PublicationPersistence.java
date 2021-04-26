@@ -72,4 +72,13 @@ public class PublicationPersistence implements IPublicationPersistence{
             throw new FitBookPersistenceException("Error no find Publication");
         }
     }
+
+    @Override
+    public void deletePublicationById(int publication_id) throws FitBookPersistenceException {
+        try {
+            pr.deleteById(publication_id);
+        } catch (Exception e) {
+            throw new FitBookPersistenceException("Error to delete publications");
+        }        
+    }
 }
