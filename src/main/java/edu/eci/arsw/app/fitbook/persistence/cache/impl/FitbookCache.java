@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
+import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.IPublicationPersistence;
 import edu.eci.arsw.app.fitbook.persistence.cache.IFitbookCache;
@@ -21,6 +22,7 @@ public class FitbookCache implements IFitbookCache{
 
     private RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, Long, Publication> hashOperations;
+    private HashOperations<String, Long, Like> hashOperationsL;
 
     @Autowired
     IPublicationPersistence pp;
@@ -89,6 +91,14 @@ public class FitbookCache implements IFitbookCache{
         List<Publication> newPublications = pp.getAllPublications();
         for(int i = 0; i<newPublications.size(); i++){
             put(newPublications.get(i));
+        }
+    }
+    @Override
+    public List<Like> getAllLike() throws Exception {
+        try {
+            return hashOperationsL.values(KEY);
+        } catch (Exception e) {
+            throw new Exception(e.toString());
         }
     }
 }

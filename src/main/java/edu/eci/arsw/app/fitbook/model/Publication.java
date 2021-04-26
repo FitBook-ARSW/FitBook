@@ -2,6 +2,7 @@ package edu.eci.arsw.app.fitbook.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,9 +31,6 @@ public class Publication implements Serializable {
     @Column(name = "user_id")
     public int userId;
 
-    @Column(name = "likes")
-    public int likes;
-
     @Column(name = "uploaddate")
     public String uploaDate;
 
@@ -46,19 +44,17 @@ public class Publication implements Serializable {
 
     }
 
-    public Publication(String content, String mail, int likes) {
+    public Publication(String content, String mail) {
         this.content = content;
         this.mail = mail;
-        this.likes = likes;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         this.uploaDate = formatter.format(date);
     }
 
-    public Publication(int publication_id, String content, int likes, String mail, String imgUrl) {
+    public Publication(int publication_id, String content, String mail, String imgUrl) {
         this.content = content;
         this.mail = mail;
-        this.likes = likes;
         this.imgUrl = imgUrl;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -87,14 +83,6 @@ public class Publication implements Serializable {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
     }
 
     public String getUploaDate() {

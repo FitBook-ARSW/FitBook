@@ -5,6 +5,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.IPublicationPersistence;
 import edu.eci.arsw.app.fitbook.persistence.cache.IFitbookCache;
@@ -71,5 +73,24 @@ public class PublicationService implements IPublicationServices {
             throw new FitBookException("Error to delete Post");
         }
         
+    }
+
+    @Override
+    public int getLikesByPost(int postid) throws FitBookException {
+        try {
+            return pp.getLikesByPost(postid);
+        } catch (Exception e) {
+            System.out.println(postid);
+            throw new FitBookException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void addLike(Like like) throws FitBookException {
+        try {
+            pp.addLike(like);
+        } catch (Exception e) {
+            throw new FitBookException("Error to delete Post");
+        }
     }
 }

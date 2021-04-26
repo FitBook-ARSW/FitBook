@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.services.IPublicationServices;
 import edu.eci.arsw.app.fitbook.services.IUserServices;
@@ -51,6 +52,16 @@ public class PublicationAPIController {
         }
     }
 
+    @RequestMapping(path = "/likes/add", method = RequestMethod.POST)
+    public ResponseEntity<?> addLike(@RequestBody Like like) {
+        try {
+            ps.addLike(like);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(path = "/publications/id/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getPubicationById(@PathVariable(name = "id") int id) {
         try {
@@ -76,6 +87,15 @@ public class PublicationAPIController {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "/likes/{postid}", method = RequestMethod.GET)
+    public ResponseEntity<?> getLikesByPost(@PathVariable(name = "postid") int postid) {
+        try {
+            return new ResponseEntity<>(ps.getLikesByPost(postid), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
         }
     }
 }
