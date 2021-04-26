@@ -5,13 +5,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.IPublicationPersistence;
 import edu.eci.arsw.app.fitbook.persistence.cache.IFitbookCache;
 import edu.eci.arsw.app.fitbook.services.FitBookException;
 import edu.eci.arsw.app.fitbook.services.IPublicationServices;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @Service
 public class PublicationService implements IPublicationServices {
@@ -91,6 +91,19 @@ public class PublicationService implements IPublicationServices {
             pp.addLike(like);
         } catch (Exception e) {
             throw new FitBookException("Error to delete Post");
+        }
+    }
+
+    @Scheduled(fixedDelay = 300000)
+    public void reseltHashOperation() throws Exception {
+        System.out.println("automatic cache");
+        List<Publication> oldPublications = fc.getAll();
+        for(int i = 0; i < oldPublications.size(); i++){
+            fc.delete(oldPublications.get(i).publication_id);
+        }
+        List<Publication> newPublications = pp.getAllPublications();
+        for(int i = 0; i<newPublications.size(); i++){
+            fc.put(newPublications.get(i));
         }
     }
 }

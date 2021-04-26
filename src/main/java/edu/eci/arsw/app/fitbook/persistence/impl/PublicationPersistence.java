@@ -6,10 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.COUNT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import edu.eci.arsw.app.fitbook.model.Like;
 import edu.eci.arsw.app.fitbook.model.Publication;
 import edu.eci.arsw.app.fitbook.persistence.FitBookPersistenceException;
@@ -36,7 +34,7 @@ public class PublicationPersistence implements IPublicationPersistence{
             Query query = entityManager.createNativeQuery("select * from publications order by uploaddate desc", Publication.class);
             return query.getResultList();
         } catch (Exception e) {
-            throw new FitBookPersistenceException("Publications not founds");
+            throw new FitBookPersistenceException("Publications not founds bro");
         }
     }
 
@@ -87,7 +85,7 @@ public class PublicationPersistence implements IPublicationPersistence{
             throw new FitBookPersistenceException("Error to delete publications");
         } 
     }
-           
+
     public int getLikesByPost(int postid) throws FitBookPersistenceException {
         try {
             Query query = entityManager.createNativeQuery("select * from likes where postid=?", Like.class);

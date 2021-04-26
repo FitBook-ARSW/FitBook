@@ -2,7 +2,6 @@ package edu.eci.arsw.app.fitbook.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -28,11 +27,8 @@ public class Publication implements Serializable {
     @Column(name = "content")
     public String content;
 
-    @Column(name = "user_id")
-    public int userId;
-
-    @Column(name = "uploaddate")
-    public String uploaDate;
+    @Column(name = "upload")
+    public String uploadDate;
 
     @Column(name = "mail")
     public String mail;
@@ -49,7 +45,7 @@ public class Publication implements Serializable {
         this.mail = mail;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        this.uploaDate = formatter.format(date);
+        this.uploadDate = formatter.format(date);
     }
 
     public Publication(int publication_id, String content, String mail, String imgUrl) {
@@ -58,7 +54,7 @@ public class Publication implements Serializable {
         this.imgUrl = imgUrl;
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        this.uploaDate = formatter.format(date);
+        this.uploadDate = formatter.format(date);
     }
 
     public int getId() {
@@ -77,20 +73,12 @@ public class Publication implements Serializable {
         this.content = content;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUploaDate() {
-        return uploaDate;
+        return uploadDate;
     }
 
     public void setUploadDate(String uploaDate) {
-        this.uploaDate = uploaDate;
+        this.uploadDate = uploaDate;
     }
 
     public String getMail() {
