@@ -84,6 +84,15 @@ public class PublicationService implements IPublicationServices {
             throw new FitBookException(e.getMessage());
         }
     }
+    @Override
+    public List<Like> getLikesByPost2(int postid) throws FitBookException {
+        try {
+            return pp.getLikesByPost2(postid);
+        } catch (Exception e) {
+            System.out.println(postid);
+            throw new FitBookException(e.getMessage());
+        }
+    }
 
     @Override
     public void addLike(Like like) throws FitBookException {
@@ -105,5 +114,23 @@ public class PublicationService implements IPublicationServices {
         for(int i = 0; i<newPublications.size(); i++){
             fc.put(newPublications.get(i));
         }
+    }
+
+    @Override
+    public List<Like> getAllLikes() throws FitBookException {
+        try {
+            return pp.getAllLikes();
+        } catch (Exception e) {
+            throw new FitBookException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void removeLike(int idl) throws FitBookException {
+        try {
+            pp.removeLike(idl);
+        } catch (Exception e) {
+            throw new FitBookException("Error to delete Like");
+        }        
     }
 }

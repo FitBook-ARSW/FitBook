@@ -21,6 +21,7 @@ public class Publication implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int publication_id;
 

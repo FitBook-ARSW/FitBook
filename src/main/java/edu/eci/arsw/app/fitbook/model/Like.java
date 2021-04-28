@@ -13,11 +13,12 @@ import javax.persistence.Table;
 public class Like implements Serializable{
 
     @Id
+    @Column(name = "like_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int like_id;
 
-    @Column(name = "userid")
-    private int userid;
+    @Column(name = "mail")
+    private int mail;
 
     @Column(name = "postid")
     private int postid;
@@ -25,9 +26,9 @@ public class Like implements Serializable{
     public Like() {
     }
 
-    public Like(int id, int userid, int postid) {
+    public Like(int like_id, int mail, int postid) {
         this.like_id = like_id;
-        this.userid = userid;
+        this.mail = mail;
         this.postid = postid;
     }
 
@@ -39,12 +40,12 @@ public class Like implements Serializable{
         this.like_id = id;
     }
 
-    public int getUserid() {
-        return this.userid;
+    public int getMail() {
+        return this.mail;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setMail(int mail) {
+        this.mail = mail;
     }
 
     public int getPostid() {
@@ -60,8 +61,8 @@ public class Like implements Serializable{
         return this;
     }
 
-    public Like userid(int userid) {
-        setUserid(userid);
+    public Like mail(int mail) {
+        setMail(mail);
         return this;
     }
 
@@ -74,7 +75,7 @@ public class Like implements Serializable{
     public String toString() {
         return "{" +
             " id='" + getLike_id() + "'" +
-            ", userid='" + getUserid() + "'" +
+            ", email='" + getMail() + "'" +
             ", postid='" + getPostid() + "'" +
             "}";
     }

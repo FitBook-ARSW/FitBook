@@ -37,6 +37,15 @@ public class PublicationAPIController {
         }
     }
 
+    @RequestMapping(path = "/likes", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllLikes() {
+        try {
+            return new ResponseEntity<>(ps.getAllLikes(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(path = "/publications/add", method = RequestMethod.POST)
     public ResponseEntity<?> createNewPublication(@RequestBody Publication publication) {
         try {
@@ -55,7 +64,19 @@ public class PublicationAPIController {
     @RequestMapping(path = "/likes/add", method = RequestMethod.POST)
     public ResponseEntity<?> addLike(@RequestBody Like like) {
         try {
+            int index = ps.getAllLikes().size();
+            like.setLike_id(index+1);
             ps.addLike(like);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(path = "/likes/remove/{like_id}", method = RequestMethod.POST)
+    public ResponseEntity<?> removeLike(@PathVariable(name = "like_id") int idl) {
+        try {
+            ps.removeLike(idl);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -94,6 +115,15 @@ public class PublicationAPIController {
     public ResponseEntity<?> getLikesByPost(@PathVariable(name = "postid") int postid) {
         try {
             return new ResponseEntity<>(ps.getLikesByPost(postid), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(path = "/likes/post/{postid}", method = RequestMethod.GET)
+    public ResponseEntity<?> getLikesByPost2(@PathVariable(name = "postid") int postid) {
+        try {
+            return new ResponseEntity<>(ps.getLikesByPost2(postid), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.BAD_REQUEST);
         }

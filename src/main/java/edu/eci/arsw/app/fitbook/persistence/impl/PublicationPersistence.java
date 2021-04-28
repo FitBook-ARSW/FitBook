@@ -90,8 +90,19 @@ public class PublicationPersistence implements IPublicationPersistence{
         try {
             Query query = entityManager.createNativeQuery("select * from likes where postid=?", Like.class);
             query.setParameter(1, postid);
-            System.out.println(query.getSingleResult());
+            System.out.println(query.getResultList());
             return query.getResultList().size();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException(e.getMessage());
+        }
+    }
+
+    public List<Like> getLikesByPost2(int postid) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("select * from likes where postid=?", Like.class);
+            query.setParameter(1, postid);
+            System.out.println(query.getResultList());
+            return query.getResultList();
         } catch (Exception e) {
             throw new FitBookPersistenceException(e.getMessage());
         }
@@ -105,5 +116,29 @@ public class PublicationPersistence implements IPublicationPersistence{
         } catch (Exception e) {
             throw new FitBookPersistenceException("Error to create publication");
         }
+    }
+
+    @Override
+    public List<Like> getAllLikes() throws FitBookPersistenceException {
+        try {
+            System.out.println("Message to database");
+            Query query = entityManager.createNativeQuery("select * from likes", Like.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void removeLike(int idl) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("delete from likes where like_id=?", Like.class);
+            query.setParameter(1, idl);
+            if (query.getResultList().size() == 0) {
+                throw new FitBookPersistenceException("Like not delete");
+            }
+        } catch (Exception e) {
+            throw new FitBookPersistenceException("Error no find like");
+        } 
     }
 }
