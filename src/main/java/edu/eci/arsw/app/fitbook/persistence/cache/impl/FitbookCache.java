@@ -55,9 +55,7 @@ public class FitbookCache implements IFitbookCache{
     @Override
     public void put(Publication publication) {
         try {
-            System.out.println(publication.getMail());
             hashOperations.put(KEY, (long) publication.getId(), publication);
-            System.out.println("Do with out error's");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

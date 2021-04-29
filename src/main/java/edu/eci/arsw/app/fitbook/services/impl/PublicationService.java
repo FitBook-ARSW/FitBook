@@ -103,9 +103,8 @@ public class PublicationService implements IPublicationServices {
         }
     }
 
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 60000)
     public void reseltHashOperation() throws Exception {
-        System.out.println("automatic cache");
         List<Publication> oldPublications = fc.getAll();
         for(int i = 0; i < oldPublications.size(); i++){
             fc.delete(oldPublications.get(i).publication_id);
