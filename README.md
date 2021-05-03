@@ -1,4 +1,5 @@
 # FitBook :bicyclist: :mountain_bicyclist:
+## ARSW
 
 Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasios de Crossfit teniendo encuenta la pandemia que estamos viviendo
 
@@ -19,6 +20,34 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 ![Administrador de Box](./img/casosdeusouno.png)
 
 ![Usuario Comun](./img/casosdeusodos.png)
+
+## Indicaciones de uso
+
+Credenciales atleta: 
+> Usuario: testa@testa.com
+> Contraseña: 123456
+
+Credenciales box: 
+> Usuario: testb@testb.com
+> Contraseña: 123456
+
+### Creación de usuarios: 
+Introducir: Nombre, C.C, correo electrónico, contraseña y confirmación de contraseña.
+
+A continuación elegiremos el tipo de cuenta Atleta o Box, y por ultimo daremos click a crear cuenta.
+
+### Dentro de la aplicación:
+Publicaciones: 
+   >Se pueden añadir nuevas publicaciones, ver publicaciones de otros usuarios y reaccionar a estas a través de likes.
+
+Perfil:
+   > Nos dejará elegir un box, seleccionar una foto de perfil y salir del box. Mostrará el nombre, el tipo de usuario y su correo.
+
+Reservar:
+   > Apartado para poder reservar las clases en su respectivo box, en el cual se podrá elegir el horario y se verán los cupos disponibles.
+
+Logout:
+   > Al darle click cerrará la sesión del usuario.
 
 ## Correr proyecto
 
