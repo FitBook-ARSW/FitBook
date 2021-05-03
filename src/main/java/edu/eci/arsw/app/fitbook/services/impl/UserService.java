@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.eci.arsw.app.fitbook.model.Box;
 import edu.eci.arsw.app.fitbook.model.User;
+import edu.eci.arsw.app.fitbook.persistence.IBoxPersistence;
 import edu.eci.arsw.app.fitbook.persistence.IUserPersistence;
 import edu.eci.arsw.app.fitbook.services.FitBookException;
 import edu.eci.arsw.app.fitbook.services.IUserServices;
@@ -15,6 +17,9 @@ public class UserService implements IUserServices {
 
     @Autowired
     IUserPersistence up;
+
+    @Autowired
+    IBoxPersistence bp;
 
     @Override
     public void addUser(User user) throws FitBookException {
@@ -73,9 +78,10 @@ public class UserService implements IUserServices {
     }
 
     @Override
-    public List<User> getUsersByBoxId(int boxId) throws FitBookException {
+    public List<User> getUsersByBoxId(String document) throws FitBookException {
         try {
-            return up.getUsersByBoxId(boxId);
+            Box box = bp.getBoxByDocument(document);
+            return up.getUsersByBoxId(box.getId());
         } catch (Exception e) {
             throw new FitBookException(e.toString());
         }

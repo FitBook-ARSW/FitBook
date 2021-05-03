@@ -8,4 +8,5 @@ public interface IBoxPersistence {
     void addBox(Box box) throws FitBookPersistenceException;
     Box getBoxById(int id) throws FitBookPersistenceException;
     List<Box> getAll() throws FitBookPersistenceException;
+    Box getBoxByDocument(String document) throws FitBookPersistenceException;
 }

@@ -40,6 +40,9 @@ public class User implements Serializable {
     @Column(name = "url")
     private String url;
 
+    @Column(name = "active")
+    private boolean active;
+
     public User() {
 
     }
@@ -107,5 +110,13 @@ public class User implements Serializable {
 
     public void setUrl(String url){
         this.url = url;
+    }
+
+    public boolean getActive(){
+        return active;
+    }
+
+    public void setActive(boolean active){
+        this.active = active;
     }
 }

@@ -86,10 +86,10 @@ public class UserAPIController {
         }
     }
 
-    @RequestMapping(path = "/users/box/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUsersByBoxId(@PathVariable(name = "id") int id){
+    @RequestMapping(path = "/users/box/{document}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUsersByBoxId(@PathVariable(name = "document") String document){
         try {
-            return new ResponseEntity<>(us.getUsersByBoxId(id),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(us.getUsersByBoxId(document),HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
