@@ -29,13 +29,13 @@ public class Box implements Serializable {
     private boolean active;
 
     @Column(name = "document")
-    private int document;
+    private String document;
 
     public Box() {
 
     }
 
-    public Box(String name, int document) {
+    public Box(String name, String document) {
         this.name = name;
         this.document = document;
         active = true;
@@ -65,11 +65,11 @@ public class Box implements Serializable {
         this.active = active;
     }
 
-    public int getDocument(){
+    public String getDocument(){
         return document;
     }
 
-    public void setDocument(int document){
+    public void setDocument(String document){
         this.document = document;
     }
 
