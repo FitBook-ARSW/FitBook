@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.services;
 
+import java.util.List;
+
 import edu.eci.arsw.app.fitbook.model.User;
 
 public interface IUserServices {
@@ -9,4 +11,5 @@ public interface IUserServices {
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookException;
     void unrollForBoxByEmail(String email) throws FitBookException;
     void changeUrlPhotoFromUser(String url, String mail) throws FitBookException;
+    List<User> getUsersByBoxId(int boxId) throws FitBookException;
 }

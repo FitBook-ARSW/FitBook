@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "box")
-public class Box implements Serializable{
-    
+public class Box implements Serializable {
+
     /**
      *
      */
@@ -28,37 +28,49 @@ public class Box implements Serializable{
     @Column(name = "active")
     private boolean active;
 
-    public Box(){
+    @Column(name = "document")
+    private int document;
+
+    public Box() {
 
     }
 
-    public Box(String name){
+    public Box(String name, int document) {
         this.name = name;
+        this.document = document;
         active = true;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public boolean getActive(){
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active){
+    public void setActive(boolean active) {
         this.active = active;
     }
-    
+
+    public int getDocument(){
+        return document;
+    }
+
+    public void setDocument(int document){
+        this.document = document;
+    }
+
 }

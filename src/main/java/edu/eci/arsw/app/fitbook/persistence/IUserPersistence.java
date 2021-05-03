@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.persistence;
 
+import java.util.List;
+
 import edu.eci.arsw.app.fitbook.model.User;
 
 public interface IUserPersistence {
@@ -9,4 +11,5 @@ public interface IUserPersistence {
     void changeBoxIdFromUser(int boxId, String mail) throws FitBookPersistenceException;
     void unrollForBoxByEmail(String email) throws FitBookPersistenceException;
     void changeUrlPhotoFromUser(String url, String mail) throws FitBookPersistenceException;
+    List<User> getUsersByBoxId(int boxId) throws FitBookPersistenceException;
 }

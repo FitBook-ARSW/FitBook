@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.persistence.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -98,5 +100,15 @@ public class UserPersistence implements IUserPersistence {
             throw new FitBookPersistenceException(e.toString());
         }
         
+    }
+
+    @Override
+    public List<User> getUsersByBoxId(int boxId) throws FitBookPersistenceException {
+        Query query = entityManager.createNativeQuery("select * from users where boxid=?", User.class);
+        query.setParameter(1, boxId);
+        if (query.getResultList().size() == 0) {
+            throw new FitBookPersistenceException("Not Users register in this box");
+        }
+        return query.getResultList();
     }
 }
