@@ -12,4 +12,6 @@ public interface IUserServices {
     void unrollForBoxByEmail(String email) throws FitBookException;
     void changeUrlPhotoFromUser(String url, String mail) throws FitBookException;
     List<User> getUsersByBoxId(String document) throws FitBookException;
+    void changeActiveStateOfUserToFalse(String cedula) throws FitBookException;
+    void changeActiveStateOfUserToTrue(String cedula) throws FitBookException;
 }

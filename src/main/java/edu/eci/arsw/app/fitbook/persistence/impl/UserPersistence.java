@@ -99,7 +99,7 @@ public class UserPersistence implements IUserPersistence {
         } catch (Exception e) {
             throw new FitBookPersistenceException(e.toString());
         }
-        
+
     }
 
     @Override
@@ -110,5 +110,31 @@ public class UserPersistence implements IUserPersistence {
             throw new FitBookPersistenceException("Not Users register in this box");
         }
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void changeActiveStateOfUserToFalse(String cedula) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("update users set active=false where cedula=?");
+            query.setParameter(1, cedula);
+            query.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw new FitBookPersistenceException(e.toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public void changeActiveStateOfUserToTrue(String cedula) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("update users set active=true where cedula=?");
+            query.setParameter(1, cedula);
+            query.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw new FitBookPersistenceException(e.toString());
+        }
     }
 }

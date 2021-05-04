@@ -12,4 +12,6 @@ public interface IUserPersistence {
     void unrollForBoxByEmail(String email) throws FitBookPersistenceException;
     void changeUrlPhotoFromUser(String url, String mail) throws FitBookPersistenceException;
     List<User> getUsersByBoxId(int boxId) throws FitBookPersistenceException;
+    void changeActiveStateOfUserToFalse(String cedula) throws FitBookPersistenceException;
+    void changeActiveStateOfUserToTrue(String cedula) throws FitBookPersistenceException;
 }

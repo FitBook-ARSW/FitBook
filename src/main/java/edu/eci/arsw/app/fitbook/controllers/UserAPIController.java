@@ -94,4 +94,25 @@ public class UserAPIController {
             return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(path = "/users/state/true/{document}", method = RequestMethod.POST)
+    public ResponseEntity<?> setStateActiveToTrue(@PathVariable(name = "document") String document){
+        try {
+            us.changeActiveStateOfUserToTrue(document);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(path = "/users/state/false/{document}", method = RequestMethod.POST)
+    public ResponseEntity<?> setStateActiveToFalse(@PathVariable(name = "document") String document){
+        try {
+            System.out.println(document+" documenttttt");
+            us.changeActiveStateOfUserToFalse(document);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+        }
+    }
 }

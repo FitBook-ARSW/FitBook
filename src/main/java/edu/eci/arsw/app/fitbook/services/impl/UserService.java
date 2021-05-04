@@ -87,4 +87,24 @@ public class UserService implements IUserServices {
         }
     }
 
+    @Override
+    public void changeActiveStateOfUserToFalse(String cedula) throws FitBookException {
+        try {
+            up.changeActiveStateOfUserToFalse(cedula);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }
+        
+    }
+
+    @Override
+    public void changeActiveStateOfUserToTrue(String cedula) throws FitBookException {
+        try {
+            up.changeActiveStateOfUserToTrue(cedula);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }
+        
+    }
+
 }
