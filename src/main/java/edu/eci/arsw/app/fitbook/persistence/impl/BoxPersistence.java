@@ -49,11 +49,24 @@ public class BoxPersistence implements IBoxPersistence{
     @Override
     public List<Box> getAll() throws FitBookPersistenceException {
         try {
-            System.out.println("Message to database");
             Query query = entityManager.createNativeQuery("select * from box", Box.class);
             return query.getResultList();
         } catch (Exception e) {
-            throw new FitBookPersistenceException("Publications not founds");
+            throw new FitBookPersistenceException("Boxes not founds");
+        }
+    }
+
+    @Override
+    public Box getBoxByDocument(String document) throws FitBookPersistenceException {
+        try {
+            Query query = entityManager.createNativeQuery("select * from box where document=?", Box.class);
+            query.setParameter(1, document);
+            if (query.getResultList().size() == 0) {
+                throw new FitBookPersistenceException("Box not found");
+            }
+            return (Box) query.getSingleResult();
+        } catch (Exception e) {
+            throw new FitBookPersistenceException("Box not founds");
         }
     }
     
