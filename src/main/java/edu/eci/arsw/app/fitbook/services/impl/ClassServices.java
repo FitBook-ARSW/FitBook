@@ -1,21 +1,24 @@
 package edu.eci.arsw.app.fitbook.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.eci.arsw.app.fitbook.model.Class;
-import edu.eci.arsw.app.fitbook.persistence.FitBookPersistenceException;
 import edu.eci.arsw.app.fitbook.persistence.IClassPersistence;
+import edu.eci.arsw.app.fitbook.services.FitBookException;
+import edu.eci.arsw.app.fitbook.services.IClassServices;
 
-public class ClassServices implements IClassPersistence{
+@Service
+public class ClassServices implements IClassServices{
     @Autowired
     IClassPersistence cp;
 
     @Override
-    public void addClass(Class clase) throws FitBookPersistenceException {
+    public void addClass(Class clase) throws FitBookException{
         try {
             cp.addClass(clase);
         } catch (Exception e) {
-            throw new FitBookPersistenceException("Error to create class");
+            throw new FitBookException("Error to create class");
         }        
     }
     
