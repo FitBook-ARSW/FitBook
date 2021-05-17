@@ -27,10 +27,22 @@ public class Class implements Serializable{
     @Column(name = "document")
     private String document;
 
-    public Class(String begin, int max, String document){
+    @Column(name = "day")
+    private String day;
+
+    public Class(String begin, int max, String document, String day){
         this.beginclass = begin;
         this.max = max;
         this.document = document;
+        this.day = day;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public String getDocument() {
