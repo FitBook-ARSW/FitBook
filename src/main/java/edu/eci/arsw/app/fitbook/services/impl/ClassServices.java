@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,15 @@ public class ClassServices implements IClassServices{
         } catch (Exception e) {
             throw new FitBookException("Error to create class");
         }        
+    }
+
+    @Override
+    public List<Class> getClassByBoxDocument(String document) throws FitBookException {
+        try {
+            return cp.getClassByBoxDocument(document);
+        } catch (Exception e) {
+            throw new FitBookException(e.toString());
+        }
     }
     
 }

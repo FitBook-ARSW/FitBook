@@ -37,6 +37,10 @@ public class Class implements Serializable{
         this.day = day;
     }
 
+    public Class(){
+        
+    }
+
     public String getDay() {
         return day;
     }
