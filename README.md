@@ -21,7 +21,7 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 ## Requerimiento No funcional
 
 ### Integridad
-![Integridad](./img/integridad.jpg)
+![Integridad](./img/integridad.jpeg)
 
 ## Casos de Uso
 
