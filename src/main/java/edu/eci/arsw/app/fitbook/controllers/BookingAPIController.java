@@ -50,4 +50,13 @@ public class BookingAPIController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(path = "/booking/confirm", method = RequestMethod.GET)
+    public ResponseEntity<?> confirm(@RequestParam(name = "fecha") String fecha, @RequestParam(name = "cedula") int cc){
+        try {
+            return new ResponseEntity<>(bks.confirm(cc, fecha), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

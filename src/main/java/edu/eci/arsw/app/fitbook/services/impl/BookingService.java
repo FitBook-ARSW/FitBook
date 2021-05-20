@@ -45,4 +45,15 @@ public class BookingService implements IBookingServices{
         }
     }
 
+    @Override
+    public BigInteger confirm(int cc, String fecha) throws Exception {
+        try {
+            BigInteger entero = bk.confirm(cc, fecha);
+            return entero;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }

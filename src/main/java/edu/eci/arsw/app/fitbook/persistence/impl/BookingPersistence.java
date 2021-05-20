@@ -56,4 +56,16 @@ public class BookingPersistence implements IBookingPersistence{
         }
     }
 
+    @Override
+    public BigInteger confirm(int cc, String fecha) throws Exception {
+        try {
+            Query query = entityManager.createNativeQuery("select count(*) from reservas where fecha=? and iduser=?");
+            query.setParameter(1, fecha);
+            query.setParameter(2, cc);
+            System.out.println(query.getSingleResult());
+            return (BigInteger)query.getSingleResult();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }
