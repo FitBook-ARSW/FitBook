@@ -15,6 +15,9 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 
 ![Diagrama CyC](./img/cyc.PNG)
 
+## Diagrama de despliegue
+![Despliegue](./img/despliegue.png)
+
 ## Casos de Uso
 
 ![Administrador de Box](./img/casosdeusouno.png)
