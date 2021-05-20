@@ -18,6 +18,11 @@ Repositorio del proyecto FitBook, que busca gestionar las clases de los gimnasio
 ## Diagrama de despliegue
 ![Despliegue](./img/despliegue.png)
 
+## Requerimiento No funcional
+
+### Integridad
+![Integridad](./img/integridad.jpeg)
+
 ## Casos de Uso
 
 ![Administrador de Box](./img/casosdeusouno.png)
