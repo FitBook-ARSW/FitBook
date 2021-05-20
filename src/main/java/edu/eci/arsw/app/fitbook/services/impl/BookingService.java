@@ -1,5 +1,7 @@
 package edu.eci.arsw.app.fitbook.services.impl;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,26 @@ public class BookingService implements IBookingServices{
            e.getMessage();
         }
         
+    }
+
+    @Override
+    public void cancelBooking(int cc) {
+        try {
+            bk.cancelBooking(cc);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    @Override
+    public BigInteger asistencia(String fecha) throws Exception {
+        try {
+            BigInteger entero = bk.asistencia(fecha);
+            return entero;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw new Exception(e.getMessage());
+        }
     }
 
 }
